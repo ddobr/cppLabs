@@ -7,19 +7,11 @@
 
 class MTreeNode
 {
-private:
-	int m_i = 0;
-	int m_j = 0;
-	MTreeNode* m_parent = nullptr;
-	int m_childCount = 0;
-	MTreeNode* m_children = nullptr;
-	int m_distance = 0;
-	MTreeNode(MTreeNode* parent);
-	MTreeNode();
 public:
 	int i() const;
 
 	int j() const;
+
 	MTreeNode* parent() const;
 
 	MTreeNode* child(int i) const;
@@ -36,11 +28,20 @@ public:
 
 	~MTreeNode();
 
-	void printMaze();
-
 	static void setCoord(int i, int j);
-	int getCode();
-	char findChar();
+
+
+private:
+	int m_i= 0;
+	int m_j= 0;
+	MTreeNode* m_parent = nullptr;
+	int m_childCount = 0;
+	MTreeNode* m_children = nullptr;
+	int m_distance = 0;
+	MTreeNode(MTreeNode* parent);
+	MTreeNode(MTreeNode* parent, int i, int j);
+	MTreeNode(int i, int j);
+	MTreeNode();
 };
 
 #endif // !MTREENODE_H
