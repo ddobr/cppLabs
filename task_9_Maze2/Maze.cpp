@@ -37,12 +37,10 @@ bool Maze::makeConnection(int i1, int j1, int i2, int j2)
 	else if (first + 1 == second)
 	{
 		m_field[first].m_right = true;
-		m_field[second].m_left = true;
 		return true;
 	}
 
 	m_field[first].m_down = true;
-	m_field[second].m_top = true;
 	return true;
 }
 
@@ -57,12 +55,10 @@ bool Maze::removeConnection(int i1, int j1, int i2, int j2)
 	else if (first + 1 == second)
 	{
 		m_field[first].m_right = false;
-		m_field[second].m_left = false;
 		return true;
 	}
 
 	m_field[first].m_down = false;
-	m_field[second].m_top = false;
 	return true;
 }
 
@@ -72,7 +68,7 @@ void Maze::printMaze()
 	{
 		for (int j = 0; j < n; j++)
 		{
-			std::cout << findChar(m_field[i * n + j].codePaths());
+			std::cout << findChar(m_field[i * n + j].codePaths(hasConnection(i, j - 1, i, j), hasConnection(i - 1, j, i, j)));
 		}
 		std::cout << std::endl;
 	}
